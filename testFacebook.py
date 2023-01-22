@@ -41,8 +41,14 @@ def test_facebook(usr,password):
     
     source = driver.page_source
     # print(source)
-    writeFile(source)
-    driver.find_element_by_id("loginbutton").click()
+    try:
+      driver.find_element_by_id("loginbutton").click()
+    except:
+      print('An exception occurred login')
+      writeFile(source,usr.replace("@", "_"))
+      return
+    
+    
     # Verifica si el inicio de sesión fue exitoso
     
     try:
@@ -66,8 +72,8 @@ def readFile():
             'passw':textLine[1]
         })
 
-def writeFile(text):
-     file1 = open("out/{0}".format("prueba.html"),'a+')
+def writeFile(text,name):
+     file1 = open("out/prueba_{0}.html".format(name),'a+')
      file1.write(text)
      file1.close()
 readFile()
