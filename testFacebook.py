@@ -44,7 +44,7 @@ def test_facebook(usr,password):
     try:
       driver.find_element_by_id("loginbutton").click()
     except:
-      print('An exception occurred login')
+      print('POSIBLE LOGIN')
       writeFile(source,usr.replace("@", "_"))
       return
     
