@@ -8,7 +8,7 @@ if len(sys.argv) != 4:
     print("Use => %s <filename_to_desc> <filename_pass> <out> " % sys.argv[0])
     print("Reference => https://md5decrypt.net/en/Api/")
     # print(len(sys.argv))
-    sys.exit();
+    sys.exit()
 
 
 
